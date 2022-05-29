@@ -9,6 +9,41 @@ body {
     background-color: darkgrey;
     border-radius: 2px;
     padding: 5px;
-    font-size: 25px;
+    font-size: 35px;
     font-family: 'Orbitron', sans-serif;
+    width: 300px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.numbers {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.digit, .dot, .operator {
+    font-size: 50px;
+    padding: 10px;
+    flex-grow: 3;
+}
+
+.dot {
+    flex-grow: 1;
+}
+
+.operators {
+    width: 100px;
+}
+
+.digit .operators {
+    flex-basis: auto;
 }
