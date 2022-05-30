@@ -26,23 +26,27 @@ function multiply(a,b) {
 
 function divide(a,b) {
     if (b===0) {
-        displayValue = "To infinity and beyond!";
-        updateDisplay();
+        console.log(b);
         append=false;
         selectedOperator = null;
-        lastValue = null;        
+        lastValue = null;
+        return "To Infinity!";
+    } else {
+        return a/b;
     }
-    return a/b;
 }
 
 function operate(a,b,operator) {
-    return Math.round(100000*operator(a,b,selectedOperator))/100000;
+    let result = operator(a,b,selectedOperator);
+    return (typeof result==='string') ? result : Math.round(100000*result)/100000;
 }
 
 // function for handling a pressed digit
 function digitPressed(event) {
     if (append) {
-        displayValue += event.target.textContent;
+        if (!(displayValue.includes('.') && event.target.textContent==='.')) {
+            displayValue += event.target.textContent;
+        }        
     } else {
         displayValue = event.target.textContent;
         append = true;
@@ -67,7 +71,9 @@ function operatorPressed (event) {
 function compute() {
     if (selectedOperator!==null) {
         let result = operate(Number(lastValue),Number(displayValue),selectedOperator);
-        displayValue = String(result);
+        console.log(result);
+        displayValue = (typeof result ==='string') ? result : String(result);
+        
         append=false;
         lastValue = displayValue;
         selectedOperator=null;
@@ -78,10 +84,11 @@ function compute() {
     updateDisplay();
 }
 
-// assign operator elements
+// assign equal operator
 let btnEquals = document.querySelector('.equals');
 btnEquals.addEventListener('click',compute);
 
+// assign the delte clear buttons
 let btnClear = document.querySelector('.clear');
 btnClear.addEventListener('click',function() {
     selectedOperator = null;
@@ -91,6 +98,14 @@ btnClear.addEventListener('click',function() {
     updateDisplay();
 }
 )
+
+let btnDel = document.querySelector('.del');
+btnDel.addEventListener('click',function(){
+    if (displayValue.length>0) {
+        displayValue = displayValue.slice(0,-1);
+        updateDisplay();
+    }
+});
 
 let btnOperators = document.querySelectorAll('.operator');
 btnOperators.forEach((btn)=>btn.addEventListener('click',operatorPressed));

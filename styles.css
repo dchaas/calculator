@@ -3,7 +3,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: bisque;
+    background-color: rgb(225, 250, 252);
     font-family:'Courier New', Courier, monospace;
 }
 
@@ -23,6 +23,11 @@ body {
     flex-direction: row;
     gap: 2px;
     
+}
+
+h1{
+    font-size: 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .base {
@@ -66,14 +71,34 @@ body {
     gap: 2px;
 }
 
+.operator {
+    background-color: rgb(182, 243, 213);
+}
+
 .digit .operators {
     flex-basis: auto;
 }
 
-.clear, .equals {
+.clear, .equals, .del {
     width: 100px;
 }
 
 .equals {
     font-size: 40px;
+    background-color: rgb(103, 158, 21);
+    color: white;
+}
+
+.clear {
+    background-color: crimson;
+    color: white;
+    font-weight: 600;
+}
+
+.del {
+    background-color: rgb(255, 176, 176);
+}
+
+button {
+    box-shadow: 2px 2px rgb(49, 49, 49);
 }
