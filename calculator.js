@@ -124,3 +124,10 @@ function updateDisplay() {
    
 }
 
+// for handling keypad input
+function keypadEntry(event) {
+    console.log(event);
+    let key = event.key;
+    document.getElementById(`${key}`).click();
+}
+window.addEventListener('keypress',keypadEntry);
